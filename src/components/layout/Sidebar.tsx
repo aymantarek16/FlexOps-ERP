@@ -34,18 +34,26 @@ export function Sidebar({ isCollapsed, onToggle }: SidebarProps): JSX.Element {
       )}
     >
       <div className={cn("sidebar-scroll min-h-0 flex-1 overflow-y-auto px-4 py-4", isCollapsed && "sidebar-scroll-collapsed px-3")}>
-        <div className={cn("mb-6 rounded-2xl border border-primary/15 bg-gradient-to-l from-primary-soft to-white p-3 shadow-card transition-all duration-300 dark:border-slate-700/80 dark:from-slate-800 dark:to-slate-900", isCollapsed && "mb-5 border-transparent bg-none bg-primary/10 px-2 shadow-none dark:bg-slate-900")}>
-          <div className={cn("flex items-center gap-3", isCollapsed && "justify-center")}>
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary text-white shadow-card">
-              <Building2 size={23} />
+        <div className={cn("mb-6", isCollapsed && "mb-5 grid w-full place-items-center")}>
+          {isCollapsed ? (
+            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-primary text-white">
+              <Building2 className="block" size={23} />
             </span>
-            <div className={cn("min-w-0 flex-1 overflow-hidden transition-all duration-300", isCollapsed ? "w-0 flex-none opacity-0" : "opacity-100")}>
+          ) : (
+            <div className="rounded-2xl border border-primary/15 bg-gradient-to-l from-primary-soft to-white p-3 shadow-card transition-all duration-300 dark:border-slate-700/80 dark:from-slate-800 dark:to-slate-900">
+              <div className="flex items-center gap-3">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary text-white shadow-card">
+                  <Building2 size={23} />
+                </span>
+                <div className="min-w-0 flex-1 overflow-hidden transition-all duration-300">
               <div className="flex items-center gap-2">
                 <p className="truncate text-base font-black text-ink">FlexOps ERP</p>
               </div>
               <p className="mt-1 truncate text-xs font-bold text-slate-500">نظام إدارة الأعمال الذكي</p>
+                </div>
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         <nav className="space-y-1">
@@ -85,7 +93,7 @@ export function Sidebar({ isCollapsed, onToggle }: SidebarProps): JSX.Element {
         </nav>
 
         {isCollapsed ? (
-          <div className="mx-auto mt-6 flex w-12 flex-col items-center gap-2 rounded-3xl border border-slate-200/70 bg-slate-50/80 p-1.5 dark:border-slate-800 dark:bg-slate-900/60">
+          <div className="mx-auto mt-6 flex w-12 flex-col items-center gap-2 rounded-3xl border border-slate-200/70 bg-slate-50/80 p-1.5 dark:border-transparent dark:bg-slate-900/60">
             {quickMetrics.map((metric) => (
               <div
                 key={metric.label}
