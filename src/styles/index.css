@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #0f766e;
+  --primary-soft: rgba(15, 118, 110, 0.11);
+  color: #172033;
+  background: #f7f8fb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.dark {
+  --primary-soft: color-mix(in srgb, var(--primary-color) 22%, transparent);
+  color: #e5eefb;
+  background: #0f172a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  direction: rtl;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  direction: rtl;
+  font-family: Tajawal, Cairo, "Segoe UI", Tahoma, system-ui, sans-serif;
+  background:
+    radial-gradient(circle at top right, rgba(15, 118, 110, 0.08), transparent 34rem),
+    linear-gradient(180deg, #fbfcfe 0%, #f6f7fb 100%);
+}
+
+.dark body {
+  background:
+    radial-gradient(circle at top right, rgba(20, 184, 166, 0.14), transparent 34rem),
+    linear-gradient(180deg, #111827 0%, #0f172a 100%);
+}
+
+.dark .bg-canvas {
+  background-color: #0f172a;
+}
+
+.dark .bg-white,
+.dark .bg-white\/86,
+.dark .bg-white\/90,
+.dark .bg-white\/92 {
+  background-color: rgba(15, 23, 42, 0.92);
+}
+
+.dark .bg-slate-50,
+.dark .bg-slate-100 {
+  background-color: rgba(30, 41, 59, 0.72);
+}
+
+.dark .bg-slate-950 {
+  background-color: #020617;
+}
+
+.dark .border-slate-100,
+.dark .border-slate-200,
+.dark .border-slate-200\/80,
+.dark .divide-slate-100 > :not([hidden]) ~ :not([hidden]) {
+  border-color: rgba(71, 85, 105, 0.62);
+}
+
+.dark .text-ink {
+  color: #f8fafc;
+}
+
+.dark .text-slate-700,
+.dark .text-slate-600,
+.dark .text-slate-500 {
+  color: #cbd5e1;
+}
+
+.dark .text-slate-400 {
+  color: #94a3b8;
+}
+
+.dark .placeholder\:text-slate-400::placeholder {
+  color: #94a3b8;
+}
+
+.dark .shadow-card,
+.dark .shadow-soft {
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.34);
+}
+
+.dark input,
+.dark select,
+.dark textarea {
+  color: #f8fafc;
+}
+
+.dark .hover\:bg-slate-50:hover,
+.dark .hover\:bg-slate-100:hover {
+  background-color: rgba(51, 65, 85, 0.74);
+}
+
+.dark .hover\:text-ink:hover {
+  color: #f8fafc;
+}
+
+.dark .print-target {
+  background-color: #0f172a;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+}
+
+.table-scroll {
+  scrollbar-width: thin;
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-shell {
+    position: static !important;
+    display: block !important;
+    padding: 0 !important;
+    background: #fff !important;
+  }
+
+  .print-target {
+    box-shadow: none !important;
+    border: none !important;
+  }
+}
