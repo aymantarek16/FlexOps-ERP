@@ -68,7 +68,7 @@ export function ReportsPage(): JSX.Element {
         </Card>
 
         <Card>
-          <CardHeader title={`أفضل ${settings.labels.product}ات`} />
+          <CardHeader title="أفضل الخدمات" />
           <div className="space-y-3">
             {report.topProducts.map((product, index) => (
               <div key={product.name} className="flex items-center justify-between rounded-2xl bg-slate-50 p-3">
