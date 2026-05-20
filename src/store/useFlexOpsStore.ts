@@ -13,6 +13,7 @@ import type {
 
 interface FlexOpsState {
   isAuthenticated: boolean;
+  isSidebarCollapsed: boolean;
   theme: ThemeMode;
   selectedMode: BusinessModeId;
   settings: BusinessSettings;
@@ -29,6 +30,8 @@ interface FlexOpsState {
   addedExpenses: Expense[];
   login: () => void;
   logout: () => void;
+  toggleSidebarCollapsed: () => void;
+  setSidebarCollapsed: (isCollapsed: boolean) => void;
   toggleTheme: () => void;
   setTheme: (theme: ThemeMode) => void;
   setSettings: (settings: BusinessSettings) => void;
@@ -54,6 +57,7 @@ export const useFlexOpsStore = create<FlexOpsState>()(
   persist(
     (set) => ({
       isAuthenticated: false,
+      isSidebarCollapsed: false,
       theme: "light",
       selectedMode: defaultMode,
       settings: createSettingsFromMode(defaultMode),
@@ -70,6 +74,11 @@ export const useFlexOpsStore = create<FlexOpsState>()(
       addedExpenses: [],
       login: () => set({ isAuthenticated: true }),
       logout: () => set({ isAuthenticated: false }),
+      toggleSidebarCollapsed: () =>
+        set((state) => ({
+          isSidebarCollapsed: !state.isSidebarCollapsed,
+        })),
+      setSidebarCollapsed: (isSidebarCollapsed) => set({ isSidebarCollapsed }),
       toggleTheme: () =>
         set((state) => ({
           theme: state.theme === "light" ? "dark" : "light",
